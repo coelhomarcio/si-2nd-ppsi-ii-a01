@@ -1,8 +1,288 @@
 @charset "UTF-8";
 
-iframe {
-    border: none;
-    width: 576px;
-    height: 324px;
-    margin: auto;
+/* Recomendação 3.9 – Em tabelas, utilizar títulos e resumos de forma apropriada */
+
+/*IMPORTANTE: A TABELA NÃO ESTÁ RESPONSIVA*/
+/*IMPORTANTE: TIRAR AS CORES DE FUNDO NO MEDIA*/
+/*SE DER TEMPO, VALIDAR E-MAIL*/
+
+/* >>> ESQUEMA DE CORES BEGIN <<< */
+
+/*
+    #000        Preto
+    #222        Preto mais claro
+    #385460     Azul acizentado
+    #af151e     Vermelho
+    #ddd        Branco escuro
+    #fff        Branco
+*/
+
+/* >>> ESQUEMA DE CORES END <<< */
+
+/* >>> ROOT BEGIN <<< */
+
+:root {
+    background-color: #385460;
+    transition: all 0.7s ease;
 }
+body {
+    width: 90%;
+    margin: auto;
+    background-color: #ddd;
+    color: #385460;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    transition: all 0.7s ease;
+}
+
+/* >>> ROOT BEGIN <<< */
+
+/* >>> HEADER BEGIN <<< */
+
+header {
+    background-color: #222;
+    border-bottom: 3px solid #af151e;
+    padding: 2% 2% 0 2%;
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+    grid-template-rows: 1fr 0.5fr;
+    grid-column-gap: 4%;
+}
+header > div, header > h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header > div > img {
+    grid-column: 1/2;
+    max-width: 100%;
+}
+header > h1 {
+    word-break: break-word;
+    grid-column: 2/3;
+    text-align: center;
+}
+header > nav {
+    grid-row: 2/3;
+    grid-column: 1/3;
+}
+header > nav ul {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+header > nav > ul > li.menu {
+    display: none;
+}
+header > nav ul li {
+    list-style: none;
+}
+header > nav li a {
+    padding: 16px 32px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+header > nav li a:hover {
+    color: #af151e;
+}
+header li > a:active {
+    position: relative;
+    top: 3px;
+}
+header ul li.menu > ul.submenu {
+    position: absolute;
+    z-index: 999999999;
+    flex-direction: column;
+    text-align: center;
+    background-color: #222;
+    border-radius: 0 0 3px 3px;
+    display: none;
+}
+header ul > li.menu:hover > ul.submenu {
+    display: block;
+}
+header li.menu > ul.submenu > li {
+    padding: 16px 32px;
+    margin: 2px 0;
+}
+
+    /* >>> MEDIA HEADER BEGIN <<< */
+
+@media (max-width: 899px) {
+    :root {
+        background-color: #af151e;
+    }
+    header {
+        grid-template-columns: 0.25fr 1fr;
+    }
+    header > h1 {
+        font-size: 1.5em;
+    }
+    @media (max-width: 649px) {
+        :root {
+            background-color: #272;
+        }
+        header {
+            grid-template-columns: 0.3fr 1fr;
+        }
+        header > h1 {
+            font-size: 1.2em;
+        }
+        header > nav > ul > li:not(.contraste) {
+            display: none;
+        }
+        header > nav > ul > li.menu {
+            display: block;
+        }
+        @media (max-width: 399px) {
+            :root {
+                background-color: #d2a837;
+            }
+            header {
+                grid-template-columns: 0.35fr 1fr;
+            }
+            header > h1 {
+                font-size: 1.0em;
+            }
+        }
+    }
+}
+
+    /* >>> MEDIA HEADER END <<< */
+
+/* >>> HEADER END <<< */
+
+/* >>> SECTIONS BEGIN <<< */
+
+section {
+    width: 90%;
+    margin: auto;
+    transition: all 0.7s ease;
+}
+section#grade, section#video, section#docentes, section#obrigado {
+    display: none;
+}
+
+/* >>> SECTIONS END <<< */
+
+/* >>> SECTION CURSO BEGIN <<< */
+
+section#curso > p {
+    text-indent: 5%;
+}
+
+/* >>> SECTION CURSO END <<< */
+
+/* >>> SECTION GRADE BEGIN <<< */
+
+section#grade > table > caption {
+    font-size: 150%;
+    margin-bottom: 20px;
+}
+section#grade caption > span {
+    font-size: 70%;
+    opacity: 70%;
+}
+section#grade > table {
+    border-collapse: collapse;
+}
+section#grade tr > th {
+    border: 3px solid #af151e;
+}
+section#grade tr > th, section#grade tr > td {
+    padding: 2%;
+}
+
+/* >>> SECTION GRADE END <<< */
+
+/* >>> SECTION VÍDEO BEGIN <<< */
+
+section#video > video {
+    display: block;
+    width: 80%;
+    margin: 2% auto;
+    outline: 0;
+    border: 3px solid #af151e;
+    border-radius: 3px;
+}
+
+/* >>> SECTION VÍDEO END <<< */
+
+/* >>> SECTION DOCENTES BEGIN <<< */
+
+section#docentes > main{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-gap: 20px;
+}
+section#docentes > main > p {
+    cursor: pointer;
+}
+section#docentes aside > p {
+    text-align: center;
+    display: none;
+}
+section#docentes aside > p > img {
+    width: 25%;
+    border: 3px solid #af151e;
+    border-radius: 3px;
+}
+section#docentes > aside + p {
+    text-align: center;
+    cursor: pointer;
+    display: none;
+}
+section#docentes > aside + p:hover {
+    font-weight: bold;
+}
+
+/* >>> SECTION DOCENTES END <<< */
+
+/* >>> SECTION OBRIGADO BEGIN <<< */
+
+section#obrigado > p {
+    text-align: center;
+}
+
+/* >>> SECTION OBRIGADO END <<< */
+
+/* >>> FOOTER BEGIN <<< */
+
+footer {
+    background-color: #222;
+    color: #ddd;
+    padding: 1%;
+    text-align: center;
+}
+footer label > i {
+    font-size: 200%;
+}
+footer > form > input {
+    font-size: 120%;
+    padding: 1px 2px;
+    border-radius: 3px;
+    outline: 0;
+    margin: 1% 0;
+}
+footer > form > button {
+    font-size: 110%;
+    padding: 8px 16px;
+    margin: 1%;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 3px;
+    background-color: #222;
+    color: #ddd;
+    border: 2px solid #ddd;
+    box-shadow: 2px 2px 4px #fff;
+    cursor: pointer;
+    outline: 0;
+}
+footer > form > button:active {
+    position: relative;
+    top: 1px;
+    box-shadow: none;
+}
+
+/* >>> FOOTER END <<< */
