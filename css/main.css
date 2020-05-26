@@ -60,7 +60,6 @@ header > div > img {
     max-width: 100%;
 }
 header > h1 {
-    word-break: break-word;
     grid-column: 2/3;
     text-align: center;
 }
