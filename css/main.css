@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
+/*Recomendação 4.3 – Permitir redimensionamento sem perda de funcionalidade*/
+
 /* Recomendação 3.9 – Em tabelas, utilizar títulos e resumos de forma apropriada */
 
-/*IMPORTANTE: A TABELA NÃO ESTÁ RESPONSIVA*/
-/*IMPORTANTE: TIRAR AS CORES DE FUNDO NO MEDIA*/
 /*SE DER TEMPO, VALIDAR E-MAIL*/
 
 /* >>> ESQUEMA DE CORES BEGIN <<< */
@@ -23,7 +23,8 @@
 
 :root {
     background-color: #385460;
-    transition: all 0.7s ease;
+    scroll-behavior: smooth;
+    transition: .5s ease all;
 }
 body {
     width: 90%;
@@ -31,7 +32,9 @@ body {
     background-color: #ddd;
     color: #385460;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    transition: all 0.7s ease;
+    font-size: 1em;
+    transition: .5s ease all;
+    word-break: break-word;
 }
 
 /* >>> ROOT BEGIN <<< */
@@ -43,9 +46,9 @@ header {
     border-bottom: 3px solid #af151e;
     padding: 2% 2% 0 2%;
     display: grid;
-    grid-template-columns: 0.2fr 1fr;
-    grid-template-rows: 1fr 0.5fr;
-    grid-column-gap: 4%;
+    grid-template-columns: .3fr 1fr;
+    grid-template-rows: 1fr .5fr;
+    grid-column-gap: 2%;
 }
 header > div, header > h1 {
     display: flex;
@@ -76,22 +79,26 @@ header > nav > ul > li.menu {
 header > nav ul li {
     list-style: none;
 }
-header > nav li a {
+header > nav li > a {
     padding: 16px 32px;
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
+    cursor: pointer;
 }
-header > nav li a:hover {
+header > nav li > a:hover {
     color: #af151e;
 }
-header li > a:active {
+header > nav li > a:active {
     position: relative;
     top: 3px;
 }
-header ul li.menu > ul.submenu {
+header > nav li.menu > ul.submenu {
     position: absolute;
+    left: 50%;
+    width: 280px;
+    margin-left: -140px;
     z-index: 999999999;
     flex-direction: column;
     text-align: center;
@@ -99,76 +106,37 @@ header ul li.menu > ul.submenu {
     border-radius: 0 0 3px 3px;
     display: none;
 }
-header ul > li.menu:hover > ul.submenu {
+header > nav li.menu:hover > ul.submenu {
     display: block;
 }
-header li.menu > ul.submenu > li {
+header > nav li.menu > ul.submenu > li {
     padding: 16px 32px;
     margin: 2px 0;
 }
-
-    /* >>> MEDIA HEADER BEGIN <<< */
-
-@media (max-width: 899px) {
-    :root {
-        background-color: #af151e;
-    }
-    header {
-        grid-template-columns: 0.25fr 1fr;
-    }
-    header > h1 {
-        font-size: 1.5em;
-    }
-    @media (max-width: 649px) {
-        :root {
-            background-color: #272;
-        }
-        header {
-            grid-template-columns: 0.3fr 1fr;
-        }
-        header > h1 {
-            font-size: 1.2em;
-        }
-        header > nav > ul > li:not(.contraste) {
-            display: none;
-        }
-        header > nav > ul > li.menu {
-            display: block;
-        }
-        @media (max-width: 399px) {
-            :root {
-                background-color: #d2a837;
-            }
-            header {
-                grid-template-columns: 0.35fr 1fr;
-            }
-            header > h1 {
-                font-size: 1.0em;
-            }
-        }
-    }
-}
-
-    /* >>> MEDIA HEADER END <<< */
 
 /* >>> HEADER END <<< */
 
 /* >>> SECTIONS BEGIN <<< */
 
-section {
+section:not(#config) {
     width: 90%;
     margin: auto;
-    transition: all 0.7s ease;
+    transition: .5s ease all;
 }
 section#grade, section#video, section#docentes, section#obrigado {
     display: none;
+    opacity: 0;
+    transform: scale(0);
 }
 
 /* >>> SECTIONS END <<< */
 
 /* >>> SECTION CURSO BEGIN <<< */
 
-section#curso > p {
+section#curso > h3 {
+    text-align: center;
+}
+section#curso > p:nth-of-type(-n + 2) {
     text-indent: 5%;
 }
 
@@ -176,22 +144,38 @@ section#curso > p {
 
 /* >>> SECTION GRADE BEGIN <<< */
 
-section#grade > table > caption {
-    font-size: 150%;
-    margin-bottom: 20px;
+section#grade > h3 {
+    text-align: center;
 }
-section#grade caption > span {
-    font-size: 70%;
+section#grade > p {
+    text-indent: 5%;
+    font-size: 80%;
     opacity: 70%;
 }
-section#grade > table {
-    border-collapse: collapse;
+section#grade > nav {
+    margin: 4%;
 }
-section#grade tr > th {
-    border: 3px solid #af151e;
+section#grade > nav > ul > li {
+    margin: 4% auto;
 }
-section#grade tr > th, section#grade tr > td {
-    padding: 2%;
+section#grade > nav > ul > li > a {
+    background-color: #385460;
+    color: #ddd;
+    display: block;
+    font-weight: bold;
+    border-radius: 3px;
+    text-align: center;
+ }
+section#grade > nav ul {
+    padding: 0;
+    margin: 0;
+}
+section#grade > nav > ul li {
+    list-style: none;
+}
+section#grade > nav > ul > li > ul > li {
+    margin: 1% 5%;
+    display: block;
 }
 
 /* >>> SECTION GRADE END <<< */
@@ -201,7 +185,7 @@ section#grade tr > th, section#grade tr > td {
 section#video > video {
     display: block;
     width: 80%;
-    margin: 2% auto;
+    margin: 4% auto;
     outline: 0;
     border: 3px solid #af151e;
     border-radius: 3px;
@@ -211,30 +195,43 @@ section#video > video {
 
 /* >>> SECTION DOCENTES BEGIN <<< */
 
-section#docentes > main{
+section#docentes > nav{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    grid-gap: 20px;
+    grid-gap: 2vw;
 }
-section#docentes > main > p {
+section#docentes > nav > p {
+    padding: 3%;
     cursor: pointer;
 }
-section#docentes aside > p {
+section#docentes > nav > p:hover {
+    outline: 2px solid #af151e;
+}
+section#docentes > aside > p {
     text-align: center;
     display: none;
+    opacity: 0;
+    transform: scale(0);
+    transition: .5s ease all;
 }
-section#docentes aside > p > img {
+section#docentes > aside > p > img {
     width: 25%;
     border: 3px solid #af151e;
     border-radius: 3px;
 }
 section#docentes > aside + p {
     text-align: center;
+    font-weight: bold;
+    width: fit-content;
+    margin: 4% auto;
     cursor: pointer;
     display: none;
+    opacity: 0;
+    transform: scale(0);
+    transition: .5s ease all;
 }
 section#docentes > aside + p:hover {
-    font-weight: bold;
+    color: #af151e;
 }
 
 /* >>> SECTION DOCENTES END <<< */
@@ -247,11 +244,59 @@ section#obrigado > p {
 
 /* >>> SECTION OBRIGADO END <<< */
 
+/* >>> SECTION CONFIG BEGIN <<< */
+
+section#config {
+    position: fixed;
+    top: 0;
+    right: 5%;
+    margin-right: -32px;
+}
+section#config > h2 {
+    display: none;
+}
+section#config > nav > ul {
+    padding: 0;
+    margin: 0;
+}
+section#config ul > li {
+    list-style: none;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    font-size: 80%;
+}
+section#config ul > li:first-of-type {
+    margin-bottom: 30px;
+}
+section#config ul > li:nth-of-type(3) {
+    margin: 15px 0;
+}
+section#config li > a {
+    background-color: #222;
+    color: #fff;
+    display: block;
+    padding: 8px 4px;
+    cursor: pointer;
+}
+section#config li:first-child > a {
+    border-radius: 0 0 3px 0;
+}
+section#config li:nth-child(n + 2) > a {
+    border-radius: 0 3px 3px 0;
+}
+section#config li > a:hover {
+    color: #af151e;
+}
+
+/* >>> SECTION CONFIG END <<< */
+
 /* >>> FOOTER BEGIN <<< */
 
 footer {
     background-color: #222;
-    color: #ddd;
+    color: #385460;
+    border-top: 3px solid #af151e;
     padding: 1%;
     text-align: center;
 }
@@ -264,6 +309,7 @@ footer > form > input {
     border-radius: 3px;
     outline: 0;
     margin: 1% 0;
+    width: 40%;
 }
 footer > form > button {
     font-size: 110%;
@@ -273,10 +319,11 @@ footer > form > button {
     text-transform: uppercase;
     border-radius: 3px;
     background-color: #222;
-    color: #ddd;
-    border: 2px solid #ddd;
+    color: #fff;
+    border: 2px solid #fff;
     box-shadow: 2px 2px 4px #fff;
     cursor: pointer;
+    width: 20%;
     outline: 0;
 }
 footer > form > button:active {
@@ -286,3 +333,38 @@ footer > form > button:active {
 }
 
 /* >>> FOOTER END <<< */
+
+/* >>> MEDIA HEADER BEGIN <<< */
+
+@media (max-width: 849px) {
+    body {
+        width: 80%;
+    }
+    header {
+        display: flex;
+        flex-direction: column;
+    }
+    header > div > img {
+        width: 80%;
+    }
+    header > nav > ul > li {
+        display: none;
+    }
+    header > nav > ul > li.menu {
+        display: block;
+    }
+    section#config {
+        right: 10%;
+    }
+    footer > form > input {
+        margin-top: 4%;
+        width: 60%;
+    }
+    footer > form > button {
+        display: block;
+        margin: 4% auto;
+        width: 40%;
+    }
+}
+
+/* >>> MEDIA HEADER END <<< */
