@@ -5,6 +5,7 @@ function cursoFunc() {
     transitionSectionOut(video)
     transitionSectionOut(docentes)
     transitionSectionOut(obrigado)
+    transitionHeaderH2(document.querySelector("header > h2"), true)
     document.querySelector("section#video video").pause()
 }
 
@@ -15,6 +16,7 @@ function gradeFunc() {
     transitionSectionOut(video)
     transitionSectionOut(docentes)
     transitionSectionOut(obrigado)
+    transitionHeaderH2(document.querySelector("header > h2"))
     document.querySelector("section#video video").pause()
 }
 
@@ -25,6 +27,7 @@ function videoFunc() {
     transitionSectionIn(video)
     transitionSectionOut(docentes)
     transitionSectionOut(obrigado)
+    transitionHeaderH2(document.querySelector("header > h2"))
 }
 
 function docentesFunc() {
@@ -39,6 +42,7 @@ function docentesFunc() {
         transitionSectionOut(document.querySelector("section#docentes > aside + p"))
     }
     transitionSectionIn(document.querySelector("section#docentes > nav"), true)
+    transitionHeaderH2(document.querySelector("header > h2"))
     document.querySelector("section#video video").pause()
 }
 
@@ -55,7 +59,7 @@ function contraste() {
     document.querySelector("body").style.color = statusContraste ? "#fff" : "#385460"
     document.querySelector("header").style.backgroundColor = statusContraste ? "#000" : "#222"
     document.querySelector("header").style.borderBottomColor = statusContraste ? "#fff" : "#af151e"
-    document.querySelector("header > div > img").src = statusContraste ? "img/logo-fatec-branco.png" : "img/logo-fatec.png"
+    document.querySelector("header > h1 > img").src = statusContraste ? "img/logo-fatec-branco.png" : "img/logo-fatec.png"
     document.querySelector("header ul li.menu > ul.submenu").style.backgroundColor = statusContraste ? "#000" : "#222"
     document.querySelectorAll("section#grade > nav > ul > li > a").forEach(function (j) {
         j.style.color = statusContraste ? "#fff" : "#ddd"
@@ -74,7 +78,7 @@ function contraste() {
     document.querySelector("footer").style.backgroundColor = statusContraste ? "#000" : "#222"
     document.querySelector("footer").style.color = statusContraste ? "#fff" : "#385460"
     document.querySelector("footer").style.borderTopColor = statusContraste ? "#fff" : "#af151e"
-    document.querySelector("footer > form > button").style.backgroundColor = statusContraste ? "#000" : "#222"
+    document.querySelector("footer > p > input[type='submit']").style.backgroundColor = statusContraste ? "#000" : "#222"
     statusContraste = ! statusContraste
 }
 
@@ -92,7 +96,7 @@ function fonte(tam) {
             document.querySelector("section#config li > a#fonteMais").style.border = "1px solid #af151e"
             setTimeout(function() {
                 document.querySelector("section#config li > a#fonteMais").style.border = "0"
-            }, 200)
+            }, 300)
         }
     }
     else if (tam === -1) {
@@ -104,7 +108,7 @@ function fonte(tam) {
             document.querySelector("section#config li > a#fonteMenos").style.border = "1px solid #af151e"
             setTimeout(function() {
                 document.querySelector("section#config li > a#fonteMenos").style.border = "0"
-            }, 200)
+            }, 300)
         }
     }
 }
@@ -116,21 +120,36 @@ function obrigadoFunc() {
     transitionSectionOut(video)
     transitionSectionOut(docentes)
     transitionSectionIn(obrigado)
+    transitionHeaderH2(document.querySelector("header > h2"))
     document.querySelector("section#video video").pause()
 }
 
 function transitionSectionIn(targetIn, grid=false) {
-    targetIn.style.display = grid ? "grid" : "block"
     window.setTimeout(function() {
         targetIn.style.opacity = "1"
         targetIn.style.transform = "scale(1)"
-    }, 200)
+    }, 300)
+    targetIn.style.display = grid ? "grid" : "block"
 }
 
 function transitionSectionOut(targetOut) {
     targetOut.style.display = "none"
     targetOut.style.opacity = "0"
-    targetOut.style.transform = "scale(0)"
+    window.setTimeout(function() {
+        targetOut.style.transform = "scale(0)"
+    }, 300)
+}
+
+function transitionHeaderH2(target, si=false) {
+    target.style.opacity = "0"
+    window.setTimeout(function() {
+        target.style.transform = "scale(0)"
+        target.style.display = "none"
+        target.style.display = "grid"
+        target.style.opacity = "1"
+        target.style.transform = "scale(1)"
+        target.textContent = si ? "Ensino superior gratuito de qualidade" : "Sistemas para Internet"
+    }, 300)
 }
 
 let curso = document.querySelector("section#curso")
@@ -151,7 +170,7 @@ document.querySelectorAll("a.grade").forEach(function (f) {
 document.querySelectorAll("a.video").forEach(function (g) {
     g.addEventListener("click", function() { videoFunc() })
 })
-document.querySelectorAll(".docentes").forEach(function (h) {
+document.querySelectorAll("a.docentes, section#docentes > p").forEach(function (h) {
     h.addEventListener("click", function() { docentesFunc() })
 })
 for (let i = 0; i <= document.querySelectorAll("section#docentes > nav > p").length; i++) {
@@ -161,4 +180,4 @@ document.querySelector("section#config li > a#contraste").addEventListener("clic
 document.querySelector("section#config li > a#fonteMais").addEventListener("click", function() { fonte(1) })
 document.querySelector("section#config li > a#fonteReset").addEventListener("click", function() { fonte(0) })
 document.querySelector("section#config li > a#fonteMenos").addEventListener("click", function() { fonte(-1) })
-document.querySelector("footer > form > button").addEventListener("click", function() { obrigadoFunc() })
+document.querySelector("footer > p > input[type='submit']").addEventListener("click", function() { obrigadoFunc() })
