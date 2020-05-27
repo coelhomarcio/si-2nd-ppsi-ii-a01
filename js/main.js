@@ -48,8 +48,8 @@ function docentesFunc() {
 
 function showPic(n) {
     transitionSectionOut(document.querySelector("section#docentes nav"))
-    transitionSectionIn(document.querySelector("section#docentes > aside + p"))
     transitionSectionIn(document.querySelectorAll("section#docentes aside > p")[n])
+    transitionSectionIn(document.querySelector("section#docentes > aside + p"))
     resetDocentes = n
 }
 
@@ -114,14 +114,19 @@ function fonte(tam) {
 }
 
 function obrigadoFunc() {
-    transitionSectionOut(obrigado)
-    transitionSectionOut(curso)
-    transitionSectionOut(grade)
-    transitionSectionOut(video)
-    transitionSectionOut(docentes)
-    transitionSectionIn(obrigado)
-    transitionHeaderH2(document.querySelector("header > h2"))
-    document.querySelector("section#video video").pause()
+    if (! validaEmail.test(document.querySelector("footer > p > input#email").value)) {
+        window.alert("Endereço de email inválido!")
+    }
+    else {
+        transitionSectionOut(obrigado)
+        transitionSectionOut(curso)
+        transitionSectionOut(grade)
+        transitionSectionOut(video)
+        transitionSectionOut(docentes)
+        transitionSectionIn(obrigado)
+        transitionHeaderH2(document.querySelector("header > h2"))
+        document.querySelector("section#video video").pause()
+    }
 }
 
 function transitionSectionIn(targetIn, grid=false) {
@@ -158,6 +163,7 @@ let video = document.querySelector("section#video")
 let docentes = document.querySelector("section#docentes")
 let resetDocentes = document.querySelectorAll("section#docentes > nav > p").length + 1
 let obrigado = document.querySelector("section#obrigado")
+let validaEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/i
 let statusContraste = true
 let inicialFonte = 1
 let limiteFonte = 0
