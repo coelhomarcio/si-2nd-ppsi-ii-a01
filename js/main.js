@@ -170,6 +170,15 @@ document.querySelectorAll("a.grade").forEach(function (f) {
 document.querySelectorAll("a.video").forEach(function (g) {
     g.addEventListener("click", function() { videoFunc() })
 })
+document.querySelector("header > nav li.menu").addEventListener("mouseover", function() {
+    document.querySelector("header > nav li.menu > ul.submenu").style.display = "block"
+})
+document.querySelector("header > nav li.menu").addEventListener("mouseout", function() {
+    document.querySelector("header > nav li.menu > ul.submenu").style.display = "none"
+})
+document.querySelector("header > nav li.menu > ul.submenu").addEventListener("click", function() {
+    document.querySelector("header > nav li.menu > ul.submenu").style.display = "none"
+})
 document.querySelectorAll("a.docentes, section#docentes > p").forEach(function (h) {
     h.addEventListener("click", function() { docentesFunc() })
 })

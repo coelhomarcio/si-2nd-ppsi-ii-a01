@@ -109,9 +109,6 @@ header > nav li.menu > ul.submenu {
     border-radius: 0 0 3px 3px;
     display: none;
 }
-header > nav li.menu:hover > ul.submenu {
-    display: block;
-}
 header > nav li.menu > ul.submenu > li {
     padding: 16px 32px;
     margin: 2px 0;
