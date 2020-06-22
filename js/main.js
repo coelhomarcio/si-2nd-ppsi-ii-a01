@@ -163,7 +163,7 @@ let video = document.querySelector("section#video")
 let docentes = document.querySelector("section#docentes")
 let resetDocentes = document.querySelectorAll("section#docentes > nav > p").length + 1
 let obrigado = document.querySelector("section#obrigado")
-let validaEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/i
+let validaEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 let statusContraste = true
 let inicialFonte = 1
 let limiteFonte = 0

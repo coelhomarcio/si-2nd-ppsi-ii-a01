@@ -10,6 +10,8 @@ do Curso de _Sistemas para Internet_ pela **Fatec Rubens Lara**.
 ###### Felipe Santos - RA 50831921034 [✉️](mailto:felipe.f.f013@gmail.com)
 ###### Profº Alexandre Sobrino
 
+[<img align="right" src="../img/logo-fatec.png" width="200">](https://coelhomarcio.github.io/si-2nd-ppsi-ii-a01/)
+
 _**Entrega:**_  
 27/05 (9h30 às 12h50, impreterivelmente). Confirmação de recebimento **exclusivamente durante o horário da própria
 aula**, pelo próprio professor.
