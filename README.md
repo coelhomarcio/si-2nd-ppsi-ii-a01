@@ -6,7 +6,7 @@ do Curso de _Sistemas para Internet_ pela **Fatec Rubens Lara**.
 ## Integrantes
 
 ###### [Marcio Coelho](https://coelhomarcio.github.io/) - RA 50831921015 [✉️](mailto:marciocoelho@gmail.com)
-###### Victhória Nunes - RA 50831921030 [✉️](mailto:marciocoelho@gmail.com)
+###### [Victhória Nunes](https://github.com/victhorianunes/) - RA 50831921030 [✉️](mailto:victhoria.nunes@fatec.sp.gov.br)
 ###### Felipe Santos - RA 50831921034 [✉️](mailto:felipe.f.f013@gmail.com)
 ###### Profº Alexandre Sobrino
 
